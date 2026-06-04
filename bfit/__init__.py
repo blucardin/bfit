@@ -16,7 +16,7 @@ from .global_variables import __version__
 import logging, os, sys, argparse, subprocess, requests, json, code
 from logging.handlers import RotatingFileHandler
 from textwrap import dedent
-from pkg_resources import parse_version 
+from packaging import version
 from tkinter import messagebox
 
 __all__ = ['gui', 'fitting', 'backend', 'test']
@@ -123,8 +123,8 @@ def main():
     try:
         latest_version = requests.get('https://pypi.python.org/pypi/bfit/json').text
         latest_version = json.loads(latest_version)['info']['version']
-        latest_version2 = parse_version(latest_version)
-        current_version = parse_version(str(__version__))
+        latest_version2 = version.parse(latest_version)
+        current_version = version.parse(str(__version__))
         if current_version < latest_version2: 
             testfn = lambda x: messagebox.showinfo("Please update", 
                                 "Version %s available!" % latest_version)

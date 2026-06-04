@@ -38,11 +38,11 @@ dependencies = [
     'scipy',
     'iminuit',
     'requests',
-    'argparse',
     'pytest',
     'wheel',
     'jax',
     'jaxlib',
+    'packaging',
 ]
 
 [project.urls]
