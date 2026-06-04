@@ -43,6 +43,7 @@ dependencies = [
     'wheel',
     'jax',
     'jaxlib',
+    'packaging',
 ]
 
 [project.urls]
