@@ -215,8 +215,8 @@ class fitter(object):
             bounds.append(bound)
             fixedlist.append(fixed)
 
-            # look for any sharelist
-            sharelist += np.array(shlist)
+            # accumulate shared flags with logical OR (dtype=bool avoids numpy type error)
+            sharelist |= np.array(shlist, dtype=bool)
 
             # rebin and omit and slr_bkgd_corr
             try:
