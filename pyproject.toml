@@ -11,7 +11,7 @@ requires = [
 [project]
 name = "bfit"
 authors  = [{name="Derek Fujimoto", email="dfujimoto@triumf.ca" }]
-version = '4.22.4'
+version = '4.22.5'
 description = "β-NMR and β-NQR Data Analysis"
 readme = "README.md"
 classifiers = [
@@ -31,7 +31,7 @@ license = {file = "LICENSE"}
 requires-python = ">=3.9"
 dependencies = [
     'tqdm',
-    'bdata',
+    'bdata >= 6.11.5',
     'matplotlib',
     'pandas',
     'pyyaml',
