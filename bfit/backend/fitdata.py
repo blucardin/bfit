@@ -414,13 +414,14 @@ class fitdata(object):
         else:
             a = self.asym(**asym_args)
 
-            # get x self
+            # get x self (copy so later in-place unit conversions don't fail
+            # on read-only arrays returned by asym)
             if 'custom' in a.keys():
-                x = a.custom
+                x = np.copy(a.custom)
                 unit = self.ppg.scan_var_histo_factor.units
                 bfit.units[self.mode][1] = 'disable'
             else:
-                x = a[bfit.x_tag[self.mode]]
+                x = np.copy(a[bfit.x_tag[self.mode]])
                 xlabel = bfit.xlabel_dict[self.mode]
 
             # get bfit-defined units
@@ -1007,9 +1008,11 @@ class fitdata(object):
         # get draw style
         style = self.bfit.draw_style.get()
 
-        # get residuals
+        # get residuals (copy x so the in-place unit conversion below doesn't
+        # fail on read-only arrays returned by asym)
         x, a, da = self.asym(self.bfit.get_asym_mode(self.bfit.fetch_files),
                              **asym_args)
+        x = np.copy(x)
         res = a - self.fitfn(x, *fit_par)
 
         # set x axis
