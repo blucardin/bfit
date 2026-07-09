@@ -650,7 +650,7 @@ class fileviewer(object):
             try:    
                 rf = int(data.ppg.rf_on.mean)
                 data_ne['RF on duration'] = "%d dwelltimes" % rf
-                key_order_ne.append('RF on delay')
+                key_order_ne.append('RF on duration')
             except AttributeError:
                 pass
             
