@@ -439,7 +439,15 @@ class bfit(object):
                             borderwidth=1,
                             background=colors.background)
 
+        # Make bfit work on MacOS
         ttk_style.configure('TButton', foreground='black', background='white')
+
+        ttk_style.map("TCombobox",
+            fieldbackground=[("readonly", "white")],
+            foreground=[("readonly", "black")],
+            selectforeground=[("readonly", "black")],
+            selectbackground=[("readonly", "white")],
+        )
 
         # icon
         self.set_icon(root)
