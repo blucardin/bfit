@@ -103,7 +103,7 @@ class popup_add_param(template_fit_popup):
                 '\nfrom the reserved modules in the parameter definition.'+\
                 '\nEx: "mypar = 1/(1_T1*TEMP)"'+\
                 '\n\nAccepts LaTeX input for the new parameter.'+\
-                '\nEx: "$\eta_\mathrm{f}$ (Tesla) = B0 * np.exp(-amp**2)"' +\
+                r'\nEx: "$\eta_\mathrm{f}$ (Tesla) = B0 * np.exp(-amp**2)"' +\
                 '\n\nValues taken as shown in fit results, with no unit scaling.'
 
         # gridding
