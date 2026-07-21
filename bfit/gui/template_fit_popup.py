@@ -145,7 +145,7 @@ class template_fit_popup(object):
         # check for new parameters
         new_par = []
         for eq in eqn:
-            lst = re.split('\W+', eq)    # split list non characters
+            lst = re.split(r'\W+', eq)    # split list non characters
 
             # throw out known things: numbers numpy equations
             delist = []
