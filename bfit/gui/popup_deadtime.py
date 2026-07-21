@@ -102,8 +102,8 @@ class popup_deadtime(object):
         self.dt_inpt.set('%g' % self.dt)
         self.c_inpt.set('%g' % self.c)
         
-        entry_dt = Entry(frame_input, textvariable=self.dt_inpt, width=10, justify=RIGHT)
-        entry_c =  Entry(frame_input, textvariable=self.c_inpt,  width=10, justify=RIGHT)
+        entry_dt = ttk.Entry(frame_input, textvariable=self.dt_inpt, width=10, justify=RIGHT)
+        entry_c =  ttk.Entry(frame_input, textvariable=self.c_inpt,  width=10, justify=RIGHT)
         
         entry_dt.bind('<KeyRelease>', self.read_dt)
         entry_c.bind('<KeyRelease>',  self.read_c)

@@ -68,7 +68,7 @@ class popup_set_histograms(object):
         
         self.text = StringVar()
         self.text.set(self.parent.hist_select)
-        self.entry = Entry(frame, textvariable=self.text, width=75, justify=CENTER)
+        self.entry = ttk.Entry(frame, textvariable=self.text, width=75, justify=CENTER)
         
         try:
             if hasattr(parent.fileviewer, 'data'): 
