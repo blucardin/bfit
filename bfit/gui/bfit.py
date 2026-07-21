@@ -407,6 +407,14 @@ class bfit(object):
         root.option_add("*Entry.DisabledBackground",colors.entry_disabled)
 
         ttk_style = ttk.Style()
+
+        # On macOS the native 'aqua' ttk theme ignores background/foreground/
+        # fieldbackground configuration, producing inconsistent button and field
+        # colors. Force a themeable engine so the color settings below apply,
+        # matching the Linux look.
+        if sys.platform == 'darwin':
+            ttk_style.theme_use('clam')
+
         ttk_style.configure('.',   font=colors.font,
                                    background=colors.background,
                                    foreground=colors.foreground,
@@ -416,13 +424,25 @@ class bfit(object):
         ttk_style.configure("TEntry", foreground=colors.foreground,
                                       fieldbackground=colors.fieldbackground)
 
+        # preserve the darker field colors for readonly/disabled entries, which
+        # were previously supplied by the *Entry.ReadonlyBackground/DisabledBackground
+        # option database entries (ignored by ttk widgets)
+        ttk_style.map('TEntry',
+                      fieldbackground=[('readonly', colors.readonly),
+                                       ('disabled', colors.entry_disabled)])
+
+        # style for the readonly chi-squared entry when the fit is bad: the field
+        # is coloured red (InputLine toggles the entry between 'TEntry' and this)
+        ttk_style.configure('Bad.TEntry', fieldbackground=colors.red)
+        ttk_style.map('Bad.TEntry', fieldbackground=[('readonly', colors.red),
+                                                      ('disabled', colors.entry_disabled)])
+
         ttk_style.map('.', background=[('disabled', colors.background)],
                            fieldbackground=[('selected', colors.selected)])
 
         ttk_style.configure('TNotebook.Tab', padding=[50, 2])
-        ttk_style.map("TNotebook.Tab",
-                      background=[("selected", colors.tab)],
-                      foreground=[("selected", 'black')])
+        ttk_style.configure("TNotebook.Tab", background=colors.background)
+        ttk_style.map("TNotebook.Tab", background=[("selected", colors.tab)])
 
         ttk_style.map("TCheckbutton", foreground=[('selected', colors.selected),
                                                  ('disabled', colors.disabled)],
@@ -438,16 +458,6 @@ class bfit(object):
         ttk_style.configure('TProgressbar',
                             borderwidth=1,
                             background=colors.background)
-
-        # Make bfit work on MacOS
-        ttk_style.configure('TButton', foreground='black', background='white')
-
-        ttk_style.map("TCombobox",
-            fieldbackground=[("readonly", "white")],
-            foreground=[("readonly", "black")],
-            selectforeground=[("readonly", "black")],
-            selectbackground=[("readonly", "white")],
-        )
 
         # icon
         self.set_icon(root)

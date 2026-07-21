@@ -258,8 +258,8 @@ class fit_files(object):
         self.xlo.set('-inf')
         self.xhi.set('inf')
 
-        entry_xspecify_lo = Entry(xspecify_frame, textvariable=self.xlo, width=10)
-        entry_xspecify_hi = Entry(xspecify_frame, textvariable=self.xhi, width=10)
+        entry_xspecify_lo = ttk.Entry(xspecify_frame, textvariable=self.xlo, width=10)
+        entry_xspecify_hi = ttk.Entry(xspecify_frame, textvariable=self.xhi, width=10)
         label_xspecify = ttk.Label(xspecify_frame, text=" < x < ")
 
         # fit results -----------------------
@@ -298,7 +298,7 @@ class fit_files(object):
         self.annotation_combobox = ttk.Combobox(results_frame,
                                       textvariable=self.annotation,
                                       state='readonly', width=19)
-        self.par_label_entry = Entry(results_frame,
+        self.par_label_entry = ttk.Entry(results_frame,
                                     textvariable=self.par_label, width=21)
 
         # gridding

@@ -84,7 +84,7 @@ class dataline(object):
         line_frame.bind('<Leave>', self.on_line_leave)
         
         label_label = ttk.Label(line_frame, text="Label:", pad=5)
-        self.label_entry = Entry(line_frame, textvariable=self.label, \
+        self.label_entry = ttk.Entry(line_frame, textvariable=self.label, \
                 width=22)
                 
         remove_button = ttk.Button(line_frame, text='Remove', \

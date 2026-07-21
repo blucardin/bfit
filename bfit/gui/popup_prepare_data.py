@@ -108,7 +108,7 @@ class popup_prepare_data(object):
         # run label
         frame_label = ttk.Frame(frame_details)
         label_label = ttk.Label(frame_label, text='Label:', justify=LEFT)
-        self.entry_label = Entry(frame_label, textvariable=self.data.label, width=18)
+        self.entry_label = ttk.Entry(frame_label, textvariable=self.data.label, width=18)
         self.entry_label.bind('<KeyRelease>', self.ungray_label)
         button_label = ttk.Button(frame_label, text='Reset to default', 
                                     command=self.reset_label, pad=1)
@@ -158,7 +158,7 @@ class popup_prepare_data(object):
         
         # omit bins
         label_omit = ttk.Label(frame_scan, text='Remove bins:')
-        entry_omit = Entry(frame_scan, textvariable=self.data.omit, width=25)
+        entry_omit = ttk.Entry(frame_scan, textvariable=self.data.omit, width=25)
         button_omit = ttk.Button(frame_scan, text='Draw raw uncorrected', command=self.draw_raw)
         
         # omit last scan
@@ -241,7 +241,7 @@ class popup_prepare_data(object):
         
         self.value = StringVar()
         self.value.set('')
-        self.entry_value = Entry(frame_modify, textvariable=self.value, width=27)
+        self.entry_value = ttk.Entry(frame_modify, textvariable=self.value, width=27)
         self.entry_value.bind('<KeyRelease>', self.set_value)
         
         # labels

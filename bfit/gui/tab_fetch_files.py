@@ -97,7 +97,7 @@ class fetch_files(object):
         
         entry_year = Spinbox(fet_entry_frame, textvariable=self.year, width=5, 
                              from_=2000, to=datetime.datetime.today().year)
-        entry_run = Entry(fet_entry_frame, textvariable=self.run, width=85)
+        entry_run = ttk.Entry(fet_entry_frame, textvariable=self.run, width=85)
         entry_run.insert(0, self.run_number_starter_line)
         entry_run.config(foreground=colors.entry_grey)
         
@@ -192,7 +192,7 @@ class fetch_files(object):
                 command=lambda: self.set_all('rebin'))
         
         check_bin_remove_label = ttk.Label(frame_scan, text="Remove:", pad=5)
-        check_bin_remove_entry = Entry(frame_scan, \
+        check_bin_remove_entry = ttk.Entry(frame_scan, \
                 textvariable=self.check_bin_remove, width=20)
         
         self.omit_state = BooleanVar()

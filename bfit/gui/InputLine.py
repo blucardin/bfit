@@ -70,7 +70,7 @@ class InputLine(object):
                 else:
                     width = self.width
 
-                self.entry[key] = Entry(self.frame,
+                self.entry[key] = ttk.Entry(self.frame,
                                           textvariable=self.variable[key],
                                           width=width)
 
@@ -346,7 +346,7 @@ class InputLine(object):
 
                 # set chi box color
                 if k == 'chi':
-                    self.entry['chi']['readonlybackground']=colors.readonly
+                    self.entry['chi'].configure(style='TEntry')
 
             # set boolean
             elif type(v) is bool:
@@ -369,9 +369,9 @@ class InputLine(object):
 
                     # set color
                     if v > self.bfit.fit_files.chi_threshold:
-                        self.entry['chi']['readonlybackground']='red'
+                        self.entry['chi'].configure(style='Bad.TEntry')
                     else:
-                        self.entry['chi']['readonlybackground']=colors.readonly
+                        self.entry['chi'].configure(style='TEntry')
 
                 # results and errors rounding
                 elif k == 'res':
