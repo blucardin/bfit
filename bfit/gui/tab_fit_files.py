@@ -272,7 +272,7 @@ class fit_files(object):
         update_button = ttk.Button(button_frame, text='Update', command=self.update_param)
         export_button = ttk.Button(button_frame, text='Export', command=self.export)
         show_button = ttk.Button(button_frame, text='Compare', command=self.show_all_results)
-        model_fit_button = ttk.Button(button_frame, text='Fit a\nModel',
+        model_fit_button = ttk.Button(button_frame, text='Fit Model',
                                       command=self.do_fit_model)
 
         # menus for x and y values
